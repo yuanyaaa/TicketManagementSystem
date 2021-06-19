@@ -1,8 +1,10 @@
 import pymysql
 import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtWidgets import  QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem
+from Dispatch import Dispatch
 from ManagerUI import Ui_Manager
+
 
 class Manager(QtWidgets.QDialog, Ui_Manager):
     def __init__(self):

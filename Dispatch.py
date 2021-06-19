@@ -16,7 +16,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['t_tid', 't_ttype', 't_seatnum']
             self.cur.execute("select * from train;")
             list = self.cur.fetchall()
-            self.title.setText('车辆修改')
+            # self.title.setText('车辆修改')
             self.tablename = "train"
             self.pk = 't_tid'
 

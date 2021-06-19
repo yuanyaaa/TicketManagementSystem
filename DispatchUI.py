@@ -1,57 +1,88 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'DispatchUI.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_Dispatch(object):
     def setupUi(self, Dispatch):
         Dispatch.setObjectName("Dispatch")
         Dispatch.resize(784, 530)
-        Dispatch.setStyleSheet("font: 14pt \"方正颜宋简体\";")
+        Dispatch.setStyleSheet("#Dispatch{border-image: url(./bg1.jpg);}")
         self.detail = QtWidgets.QTableWidget(Dispatch)
-        self.detail.setGeometry(QtCore.QRect(40, 130, 571, 301))
+        self.detail.setGeometry(QtCore.QRect(40, 120, 571, 301))
         self.detail.setStyleSheet("font: 10pt \"微软雅黑\";")
         self.detail.setObjectName("detail")
         self.detail.setColumnCount(0)
         self.detail.setRowCount(0)
-        self.line = QtWidgets.QFrame(Dispatch)
-        self.line.setGeometry(QtCore.QRect(30, 90, 711, 16))
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
         self.title = QtWidgets.QLabel(Dispatch)
-        self.title.setGeometry(QtCore.QRect(320, 30, 211, 41))
+        self.title.setGeometry(QtCore.QRect(290, 60, 271, 41))
         font = QtGui.QFont()
-        font.setFamily("方正颜宋简体")
+        font.setFamily("楷体")
         font.setPointSize(20)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
         self.title.setFont(font)
-        self.title.setStyleSheet("font: 20pt \"方正颜宋简体\";")
+        self.title.setStyleSheet("font: 20pt \"楷体\";\n"
+"color: rgb(0, 255, 255);")
         self.title.setObjectName("title")
         self.acceptbtn = QtWidgets.QPushButton(Dispatch)
-        self.acceptbtn.setGeometry(QtCore.QRect(630, 130, 111, 41))
-        self.acceptbtn.setStyleSheet("font: 14pt \"方正颜宋简体\";")
+        self.acceptbtn.setGeometry(QtCore.QRect(630, 190, 141, 61))
+        self.acceptbtn.setStyleSheet("QPushButton{\n"
+"border-style:outset;\n"
+"font: 14pt \"楷体\";\n"
+"background-color: rgb(255, 255, 0);\n"
+"border-radius:10px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"border-style:inset;\n"
+"border-radius:10px;\n"
+"background-color:rgb(255, 255, 255);\n"
+"font: 14pt \"楷体\";\n"
+"}")
         self.acceptbtn.setObjectName("acceptbtn")
         self.cancelbtn = QtWidgets.QPushButton(Dispatch)
-        self.cancelbtn.setGeometry(QtCore.QRect(630, 200, 111, 41))
-        self.cancelbtn.setStyleSheet("font: 14pt \"方正颜宋简体\";")
+        self.cancelbtn.setGeometry(QtCore.QRect(630, 310, 141, 61))
+        self.cancelbtn.setStyleSheet("QPushButton{\n"
+"border-style:outset;\n"
+"font: 14pt \"楷体\";\n"
+"background-color: rgb(255, 255, 0);\n"
+"border-radius:10px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"border-style:inset;\n"
+"border-radius:10px;\n"
+"background-color:rgb(255, 255, 255);\n"
+"font: 14pt \"楷体\";\n"
+"}")
         self.cancelbtn.setObjectName("cancelbtn")
         self.addbtn = QtWidgets.QPushButton(Dispatch)
-        self.addbtn.setGeometry(QtCore.QRect(110, 450, 111, 41))
-        self.addbtn.setStyleSheet("font: 14pt \"方正颜宋简体\";")
+        self.addbtn.setGeometry(QtCore.QRect(60, 440, 191, 51))
+        self.addbtn.setStyleSheet("QPushButton{\n"
+"border-style:outset;\n"
+"font: 14pt \"楷体\";\n"
+"background-color: rgb(255, 255, 0);\n"
+"border-radius:10px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"border-style:inset;\n"
+"border-radius:10px;\n"
+"background-color:rgb(255, 255, 255);\n"
+"font: 14pt \"楷体\";\n"
+"}")
         self.addbtn.setObjectName("addbtn")
         self.deletebtn = QtWidgets.QPushButton(Dispatch)
-        self.deletebtn.setGeometry(QtCore.QRect(420, 450, 111, 41))
-        self.deletebtn.setStyleSheet("font: 14pt \"方正颜宋简体\";")
+        self.deletebtn.setGeometry(QtCore.QRect(330, 440, 221, 51))
+        self.deletebtn.setStyleSheet("QPushButton{\n"
+"border-style:outset;\n"
+"font: 14pt \"楷体\";\n"
+"background-color: rgb(255, 255, 0);\n"
+"border-radius:10px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"border-style:inset;\n"
+"border-radius:10px;\n"
+"background-color:rgb(255, 255, 255);\n"
+"font: 14pt \"楷体\";\n"
+"}")
         self.deletebtn.setObjectName("deletebtn")
 
         self.retranslateUi(Dispatch)
@@ -63,9 +94,10 @@ class Ui_Dispatch(object):
 
     def retranslateUi(self, Dispatch):
         _translate = QtCore.QCoreApplication.translate
-        Dispatch.setWindowTitle(_translate("Dispatch", "Dialog"))
-        self.title.setText(_translate("Dispatch", "车辆修改"))
+        Dispatch.setWindowTitle(_translate("Dispatch", "信息修改"))
+        self.title.setText(_translate("Dispatch", "飞机信息修改"))
         self.acceptbtn.setText(_translate("Dispatch", "确定"))
         self.cancelbtn.setText(_translate("Dispatch", "取消"))
         self.addbtn.setText(_translate("Dispatch", "增加"))
         self.deletebtn.setText(_translate("Dispatch", "删除"))
+
