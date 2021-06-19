@@ -25,7 +25,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['s_sid', 's_sname', 's_slongitude', 's_slatitude']
             self.cur.execute("select * from station;")
             list = self.cur.fetchall()
-            self.title.setText('站点修改')
+            #self.title.setText('站点修改')
             self.tablename = 'station'
             self.pk = 's_sid'
 
@@ -43,7 +43,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['c_cid', 'c_cname', 'c_cpassword']
             self.cur.execute("select * from conductor;")
             list = self.cur.fetchall()
-            self.title.setText('售票员管理')
+            #self.title.setText('售票员管理')
             self.tablename = 'conductor'
             self.pk = 'c_cid'
 
@@ -52,7 +52,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['m_mid', 'm_mname', 'm_mpassword']
             self.cur.execute("select * from manager;")
             list = self.cur.fetchall()
-            self.title.setText('管理员管理')
+            #self.title.setText('管理员管理')
             self.tablename = 'manager'
             self.pk = 'm_mid'
             

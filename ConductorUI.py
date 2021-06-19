@@ -1,4 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+import sys
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -166,4 +170,11 @@ class Ui_Dialog(object):
 "</style></head><body style=\" font-family:\'微软雅黑\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.exitbtn.setText(_translate("Dialog", "退出"))
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    mainWindow = QDialog()
+    ui = Ui_Dialog()
+    ui.setupUi(mainWindow)
+    mainWindow.show()
+    sys.exit(app.exec_())
 

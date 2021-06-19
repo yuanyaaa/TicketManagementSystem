@@ -1,5 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+import sys
 class Ui_Manager(object):
     def setupUi(self, Manager):
         Manager.setObjectName("Manager")
@@ -145,3 +148,10 @@ class Ui_Manager(object):
         self.label_2.setText(_translate("Manager", "维护功能"))
         self.label_3.setText(_translate("Manager", "统计功能"))
 
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    mainWindow = QDialog()
+    ui = Ui_Manager()
+    ui.setupUi(mainWindow)
+    mainWindow.show()
+    sys.exit(app.exec_())

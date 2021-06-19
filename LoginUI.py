@@ -2,14 +2,19 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+import pymysql
 import sys
+from Conductor import Conductor
+from Manager import Manager
 
 
-class Ui_Form(object):
+class Ui_Form(QWidget):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(784, 507)
         Form.setStyleSheet("#Form{border-image: url(./bg_LoginUI.jpg);}")
+        self.managerui=Manager()
+        self.conductorui=Conductor()
         self.ifmanager = QtWidgets.QRadioButton(Form)
         self.ifmanager.setGeometry(QtCore.QRect(190, 130, 131, 31))
         self.ifmanager.setStyleSheet("font: 14pt \"楷体\";\n"
@@ -73,9 +78,36 @@ class Ui_Form(object):
         self.cancel.setObjectName("cancel")
 
         self.retranslateUi(Form)
-        # self.ok.clicked.connect(Form.accept)
-        # self.cancel.clicked.connect(Form.exec())
+        self.ok.clicked.connect(self.accept)
+        self.cancel.clicked.connect(self.hide)
         QtCore.QMetaObject.connectSlotsByName(Form)
+    # 登录
+    def accept(self):
+        # 管理员选择
+        if (self.ifmanager.isChecked()):
+            # 连接数据库
+            self.conn = pymysql.connect(database="TicketManagementSystem", user='root',
+                                        password='wang', host="localhost", port=3306)
+            # conn传递
+            self.managerui.connectDB(self.conn)
+            # 管理员窗口显示并关闭登录界面
+            self.managerui.show()
+            self.hide()
+
+        # 售票员选择
+        elif (self.ifconductor.isChecked()):
+            # 连接数据库
+            self.conn = pymysql.connect(database="TicketManagementSystem", user='root',
+                                        password='wang', host="localhost", port="3306")
+            # conn传递
+            self.conductorui.connectDB(self.conn, self.nametext.toPlainText())
+            # 售票员窗口显示并关闭登录界面
+            self.conductorui.show()
+            self.close()
+        else:
+            # 弹出窗口，说不能不选择角色就登录
+            # 未实现
+            pass
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

@@ -1,6 +1,8 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+import sys
 class Ui_Dispatch(object):
     def setupUi(self, Dispatch):
         Dispatch.setObjectName("Dispatch")
@@ -101,3 +103,10 @@ class Ui_Dispatch(object):
         self.addbtn.setText(_translate("Dispatch", "增加"))
         self.deletebtn.setText(_translate("Dispatch", "删除"))
 
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    mainWindow = QDialog()
+    ui = Ui_Dispatch()
+    ui.setupUi(mainWindow)
+    mainWindow.show()
+    sys.exit(app.exec_())

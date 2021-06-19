@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtWidgets import QTableWidgetItem
 from Dispatch import Dispatch
 from ManagerUI import Ui_Manager
+from Statics import  Statics
 
 
 class Manager(QtWidgets.QDialog, Ui_Manager):
