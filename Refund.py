@@ -23,7 +23,7 @@ class Refund(QtWidgets.QDialog, Ui_Refund):
             for j, jtem in enumerate(item):
                 if(j == sumi - 1):
                     self.tcidlist.append(jtem)
-                    continue;
+                    continue
                 newitem = QTableWidgetItem(str(jtem))
                 self.detail.setItem(i, j, newitem)
         self.detail.clicked.connect(self.showrefundmoney)
