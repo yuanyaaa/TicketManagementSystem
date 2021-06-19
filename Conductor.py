@@ -2,6 +2,8 @@ import pymysql
 import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
 from ConductorUI import Ui_Dialog
+from Sell import Sell
+from Refund import  Refund
 from PyQt5.QtWidgets import QTableWidgetItem
 
 
@@ -24,6 +26,7 @@ class Conductor(QtWidgets.QDialog, Ui_Dialog):
 
 
     def searchdetail(self):
+        #TODO
         self.cur.execute("select * from searchdetail( '"+self.aimstation.currentText()
                          +"', cast("+str(self.month.value())+ " as smallint), cast("+ str(self.date.value()) + " as smallint));")
         tmp = self.cur.fetchall()
