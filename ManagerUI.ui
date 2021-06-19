@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Manager</class>
+ <widget class="QDialog" name="Manager">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>772</width>
+    <height>385</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="trainbtn">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>100</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>车辆修改</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="stationbtn">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>180</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>站点修改</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="trainnumbtn">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>260</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>车次修改</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>100</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>售票员管理</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>180</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>管理员管理</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_6">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>100</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>售票统计</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>263</x>
+     <y>80</y>
+     <width>20</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>70</y>
+     <width>651</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>80</y>
+     <width>20</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>30</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>调度功能</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>30</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>维护功能</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>30</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;方正颜宋简体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>统计功能</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>trainbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>Manager</receiver>
+   <slot>updatetrain()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>41</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stationbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>Manager</receiver>
+   <slot>updatestation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>40</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>trainnumbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>Manager</receiver>
+   <slot>updatedeparturetime()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>290</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>33</x>
+     <y>297</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>Manager</receiver>
+   <slot>addconductor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>Manager</receiver>
+   <slot>addmanager()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>330</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>289</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>Manager</receiver>
+   <slot>showsell()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>638</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>715</x>
+     <y>163</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>updatetrain()</slot>
+  <slot>updatestation()</slot>
+  <slot>updatedeparturetime()</slot>
+  <slot>addconductor()</slot>
+  <slot>addmanager()</slot>
+  <slot>showsell()</slot>
+ </slots>
+</ui>
