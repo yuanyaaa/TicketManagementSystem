@@ -34,7 +34,9 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
         elif(type == 2):
             hlist = ['车次','车ID', '终点站',  '发车时间', '检票口', '发车月份', '发车日期', '车票价格']
             self.attrs = ['dt_trainnum', 'dt_tid', 'dt_aimsid',  'dt_departuretime', 'dt_ticketentrance', 'dt_month', 'dt_date', 'dt_cost']
+            # self.attrs = ['dt_trainnum', 'dt_tid', 'dt_aimsid',  'dt_departuretime', 'dt_ticketentrance', 'dt_month', 'dt_date']
             self.cur.execute("select dt_trainnum,dt_tid, s_sname, dt_departuretime,   dt_ticketentrance, dt_month, dt_date, dt_cost from departuretime,station where dt_aimsid = s_sid;")
+            # self.cur.execute("select dt_trainnum,dt_tid, s_sname, dt_departuretime,   dt_ticketentrance, dt_month, dt_date from departuretime,station where dt_aimsid = s_sid;")
             list = self.cur.fetchall()
             self.title.setText('车次修改')
             self.tablename = 'departuretime'
@@ -126,6 +128,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.detail.setItem(cnt, 0, newitem)
         elif(self.type == 2):
             self.cur.execute("INSERT INTO departuretime(dt_tid, dt_aimsid, dt_trainnum, dt_departuretime, dt_ticketentrance, dt_month, dt_date, dt_cost) VALUES (201912091, 10011701, 0, '00:00:00', 0, 0, 0, 0);")
+            # self.cur.execute("INSERT INTO departuretime(dt_tid, dt_aimsid, dt_trainnum, dt_departuretime, dt_ticketentrance, dt_month, dt_date) VALUES (201912091, 10011701, 0, '00:00:00', 0, 0, 0);")
             tmp = [0, '201912091', '10011701', '00:00:00', 0, 0, 0]
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
