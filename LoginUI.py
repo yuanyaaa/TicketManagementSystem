@@ -13,8 +13,8 @@ class Ui_Form(QWidget):
         Form.setObjectName("Form")
         Form.resize(784, 507)
         Form.setStyleSheet("#Form{border-image: url(./bg_LoginUI.jpg);}")
-        self.managerui=Manager()
-        self.conductorui=Conductor()
+        self.managerui = Manager()
+        self.conductorui = Conductor()
         self.ifmanager = QtWidgets.QRadioButton(Form)
         self.ifmanager.setGeometry(QtCore.QRect(190, 130, 131, 31))
         self.ifmanager.setStyleSheet("font: 14pt \"楷体\";\n"
@@ -81,6 +81,7 @@ class Ui_Form(QWidget):
         self.ok.clicked.connect(self.accept)
         self.cancel.clicked.connect(self.hide)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
     # 登录
     def accept(self):
         # 管理员选择
@@ -90,9 +91,10 @@ class Ui_Form(QWidget):
                                         password='wang', host="localhost", port=3306)
             # conn传递
             self.managerui.connectDB(self.conn)
+            self.hide()
             # 管理员窗口显示并关闭登录界面
             self.managerui.show()
-            self.hide()
+
 
         # 售票员选择
         elif (self.ifconductor.isChecked()):
@@ -102,12 +104,16 @@ class Ui_Form(QWidget):
             # conn传递
             self.conductorui.connectDB(self.conn, self.nametext.toPlainText())
             # 售票员窗口显示并关闭登录界面
+            self.hide()
             self.conductorui.show()
-            self.close()
+
         else:
             # 弹出窗口，说不能不选择角色就登录
             # 未实现
             pass
+
+    def hide(self) -> None:
+        self.setVisible(False)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

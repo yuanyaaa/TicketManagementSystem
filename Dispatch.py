@@ -5,7 +5,9 @@ from PyQt5.QtWidgets import  QTableWidgetItem
 from DispatchUI import Ui_Dispatch
 
 class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
-    # def __init__(self):
+    def __init__(self):
+        super(Dispatch, self).__init__()
+        self.setupUi(self)
 
     def connectDB(self, conn, type):
         self.conn = conn
@@ -59,7 +61,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
         self.setdetail(hlist, list)
 
     def setdetail(self, hlist, list):
-        self.cur.execute("begin transaction;")
+        # self.cur.execute("begin transaction;")
         self.detail.setColumnCount(len(hlist))
         self.detail.setHorizontalHeaderLabels(hlist)
         self.detail.setRowCount(len(list))
