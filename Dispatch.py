@@ -32,7 +32,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.pk = 's_sid'
 
         elif(type == 2):
-            hlist = ['车次','车ID', '终点站',  '发车时间', '检票口', '发车月份', '发车日期', '车票价格']
+            hlist = ['航班','飞机ID', '目的地',  '起飞时间', '登机口', '出发月份', '出发日期', '机票价格']
             self.attrs = ['dt_trainnum', 'dt_tid', 'dt_aimsid',  'dt_departuretime', 'dt_ticketentrance', 'dt_month', 'dt_date', 'dt_cost']
             # self.attrs = ['dt_trainnum', 'dt_tid', 'dt_aimsid',  'dt_departuretime', 'dt_ticketentrance', 'dt_month', 'dt_date']
             self.cur.execute("select dt_trainnum,dt_tid, s_sname, dt_departuretime,   dt_ticketentrance, dt_month, dt_date, dt_cost from departuretime,station where dt_aimsid = s_sid;")
@@ -125,7 +125,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             res = self.cur.fetchall()[0][0]
             if res is None :
                 res = 0
-            tmp = [int(res) + 1, '超大飞机', 100]
+            tmp = [int(res) + 1, '空调硬座', 100]
             self.cur.execute("insert into train values ({}, \'{}\', {} );".format(tmp[0],tmp[1], tmp[2]))
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
@@ -134,9 +134,9 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             newitem.setFlags(QtCore.Qt.ItemIsEnabled)
             self.detail.setItem(cnt, 0, newitem)
         elif(self.type == 2):
-            self.cur.execute("INSERT INTO departuretime(dt_tid, dt_aimsid, dt_trainnum, dt_departuretime, dt_ticketentrance, dt_month, dt_date, dt_cost) VALUES (201912091, 1, 0, '21-06-26 00:00:00', 0, 0, 0, 0);")
+            self.cur.execute("INSERT INTO departuretime(dt_tid, dt_aimsid, dt_trainnum, dt_departuretime, dt_ticketentrance, dt_month, dt_date, dt_cost) VALUES (201912091, 10011701, 0, '00:00:00', 0, 0, 0, 0);")
             # self.cur.execute("INSERT INTO departuretime(dt_tid, dt_aimsid, dt_trainnum, dt_departuretime, dt_ticketentrance, dt_month, dt_date) VALUES (201912091, 10011701, 0, '00:00:00', 0, 0, 0);")
-            tmp = [0, '201912091', '1', '21-6-26 00:00:00', 0, 0, 0]
+            tmp = [0, '201912091', '10011701', '00:00:00', 0, 0, 0]
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
             self.detail.setRowCount(cnt + 1)
