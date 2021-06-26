@@ -10,6 +10,7 @@ from Manager import Manager
 
 class Ui_Form(QWidget):
     def setupUi(self, Form):
+        self.Form=Form
         Form.setObjectName("Form")
         Form.resize(784, 507)
         Form.setStyleSheet("#Form{border-image: url(./bg_LoginUI.jpg);}")
@@ -113,7 +114,8 @@ class Ui_Form(QWidget):
             pass
 
     def hide(self) -> None:
-        self.setVisible(False)
+        # self.setVisible(False)
+        self.Form.close()
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
