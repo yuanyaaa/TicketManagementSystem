@@ -32,13 +32,13 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.pk = 's_sid'
 
         elif(type == 2):
-            hlist = ['车次','车ID', '终点站',  '发车时间', '检票口', '发车月份', '发车日期', '车票价格']
+            hlist = ['航班','飞机ID', '目的地',  '起飞时间', '登机口', '出发月份', '出发日期', '机票价格']
             self.attrs = ['dt_trainnum', 'dt_tid', 'dt_aimsid',  'dt_departuretime', 'dt_ticketentrance', 'dt_month', 'dt_date', 'dt_cost']
             # self.attrs = ['dt_trainnum', 'dt_tid', 'dt_aimsid',  'dt_departuretime', 'dt_ticketentrance', 'dt_month', 'dt_date']
             self.cur.execute("select dt_trainnum,dt_tid, s_sname, dt_departuretime,   dt_ticketentrance, dt_month, dt_date, dt_cost from departuretime,station where dt_aimsid = s_sid;")
             # self.cur.execute("select dt_trainnum,dt_tid, s_sname, dt_departuretime,   dt_ticketentrance, dt_month, dt_date from departuretime,station where dt_aimsid = s_sid;")
             list = self.cur.fetchall()
-            self.title.setText('车次修改')
+            self.title.setText('航班修改')
             self.tablename = 'departuretime'
             self.pk = 'dt_trainnum'
 

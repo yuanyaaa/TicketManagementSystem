@@ -43,7 +43,7 @@ class Conductor(QtWidgets.QDialog, Ui_Dialog):
         # self.conn.close()
 
     def versectionclicked(self, index):
-        #车次
+        #航班
         trainnum = self.detail.selectedItems()[0].text()
         self.cur.execute("select dt_cost from departuretime where dt_trainnum = '"+trainnum+"'")
         self.pricenum = self.cur.fetchall()[0][0]
@@ -54,7 +54,7 @@ class Conductor(QtWidgets.QDialog, Ui_Dialog):
         self.rest.setText(str(self.restnum))
 
     def tosell(self):
-        # 车次
+        # 航班
         trainnum = self.detail.selectedItems()[0].text()
         self.sellui = Sell()
         self.sellui.connectDB(self.conn, trainnum, self.month.value(), self.date.value(),
