@@ -52,7 +52,8 @@ create table departuretime
     dt_departuretime  date    null,
     dt_month          int     null,
     dt_date           int     null,
-    dt_ticketentrance int     null
+    dt_ticketentrance int     null,
+    dt_cost           int     null
 );
 
 drop table if exists manager;
