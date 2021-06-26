@@ -6,22 +6,8 @@ create table refund(
 );
 
 
-
-drop table if exists departuretime;
-create table departuretime
-(
-    dt_trainnum       char(9),
-    dt_aimsid         char(9) null,
-    dt_tid            char(9) null,
-    dt_departuretime  datetime    null,
-    dt_month          int     null,
-    dt_date           int     null,
-    dt_ticketentrance int     null,
-    dt_cost           int     null,
-    primary key (dt_trainnum),
-    foreign key (dt_aimsid) references station(s_sid),
-    foreign key (dt_tid) references train(t_tid)
-);
+alter table departuretime drop foreign key departuretime_ibfk_1;
+alter table departuretime drop foreign key departuretime_ibfk_2;
 
 drop table if exists station;
 create table station(
@@ -70,22 +56,40 @@ create table manager
 
 
 
-# drop trigger if exists insert_c;
-# delimiter $$
-# create trigger insert_c before insert on TicketManagementSystem.conductor for each row
-# begin
-#     declare
-# 	tmp character(9);
-#     select max(c_cid) into tmp from conductor;
-#      if (tmp is null)
-#     then set tmp = 0;
-#     end if;
-# 	set tmp = tmp + 1;
-#     set NEW.c_cid = tmp;
-# end$$
-# delimiter ;
-#insert into conductor values(20, 'wssss', '666666');
-#select * from conductor;
+drop table if exists departuretime;
+create table departuretime
+(
+    dt_trainnum       char(9),
+    dt_aimsid         char(9) null,
+    dt_tid            char(9) null,
+    dt_departuretime  datetime    null,
+    dt_month          int     null,
+    dt_date           int     null,
+    dt_ticketentrance int     null,
+    dt_cost           int     null,
+    primary key (dt_trainnum),
+    foreign key (dt_aimsid) references station(s_sid),
+    foreign key (dt_tid) references train(t_tid)
+);
+
+
+
+drop trigger if exists insert_c;
+delimiter $$
+create trigger insert_c before insert on TicketManagementSystem.conductor for each row
+begin
+    declare
+	tmp character(9);
+    select max(c_cid) into tmp from conductor;
+     if (tmp is null)
+    then set tmp = 0;
+    end if;
+	set tmp = tmp + 1;
+    set NEW.c_cid = tmp;
+end$$
+delimiter ;
+# insert into conductor values(20, 'wssss', '666666');
+# select * from conductor;
 
 drop trigger if exists insert_m;
 delimiter $$
@@ -104,24 +108,24 @@ delete from manager where m_mid is null ;
 # insert into manager values(10, 'ws', '666666');
 # select * from manager;
 
-drop trigger if exists insert_s;
-delimiter $$
-create trigger insert_s before insert  on station for each row
-begin
-    declare tmp character(9) default 0;
-    select max(s_sid) into tmp from station;
-    if (tmp is null)
-    then set tmp = 0;
-    end if;
-
-    if(NEW.s_sname is null)
-    then set NEW.s_sname = 'default';
-    end if;
-
-	set tmp = tmp + 1;
-    set NEW.s_sid = tmp;
-end$$
-delimiter ;
+# drop trigger if exists insert_s;
+# delimiter $$
+# create trigger insert_s before insert  on station for each row
+# begin
+#     declare tmp character(9) default 0;
+#     select max(s_sid) into tmp from station;
+#     if (tmp is null)
+#     then set tmp = 0;
+#     end if;
+#
+#     if(NEW.s_sname is null)
+#     then set NEW.s_sname = 'default';
+#     end if;
+#
+# 	set tmp = tmp + 1;
+#     set NEW.s_sid = tmp;
+# end$$
+# delimiter ;
 
 #insert into station(s_slongitude, s_slatitude) values(100, 200);
 #select * from station;
