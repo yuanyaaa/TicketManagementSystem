@@ -5,6 +5,24 @@ create table refund(
     rf_money float
 );
 
+
+
+drop table if exists departuretime;
+create table departuretime
+(
+    dt_trainnum       char(9),
+    dt_aimsid         char(9) null,
+    dt_tid            char(9) null,
+    dt_departuretime  datetime    null,
+    dt_month          int     null,
+    dt_date           int     null,
+    dt_ticketentrance int     null,
+    dt_cost           int     null,
+    primary key (dt_trainnum),
+    foreign key (dt_aimsid) references station(s_sid),
+    foreign key (dt_tid) references train(t_tid)
+);
+
 drop table if exists station;
 create table station(
     s_sid        char(9),
@@ -42,27 +60,12 @@ create table conductor(
     c_cpassword varchar(40) null
 );
 
-
-drop table if exists departuretime;
-create table departuretime
-(
-    dt_trainnum       char(9),
-    dt_aimsid         char(9) null,
-    dt_tid            char(9) null,
-    dt_departuretime  datetime    null,
-    dt_month          int     null,
-    dt_date           int     null,
-    dt_ticketentrance int     null,
-    dt_cost           int     null,
-    primary key (dt_trainnum)
-);
-
 drop table if exists manager;
 create table manager
 (
     m_mid       char(9)     primary key,
     m_mname     varchar(40) null,
-    m_mpassward varchar(40) null
+    m_mpassword varchar(40) null
 );
 
 
