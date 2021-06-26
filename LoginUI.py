@@ -111,6 +111,7 @@ class Ui_Form(QWidget):
         else:
             # 弹出窗口，说不能不选择角色就登录
             # 未实现
+            QMessageBox.information(self,"remainder", "You need to choose a user first")
             pass
 
     def hide(self) -> None:

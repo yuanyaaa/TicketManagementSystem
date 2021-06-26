@@ -89,6 +89,7 @@ class Ui_Dispatch(object):
 
         self.retranslateUi(Dispatch)
         self.acceptbtn.clicked.connect(Dispatch.accept)
+        self.acceptbtn.clicked.connect(Dispatch.tableupdate)
         self.cancelbtn.clicked.connect(Dispatch.exit)
         self.addbtn.clicked.connect(Dispatch.tableadd)
         self.deletebtn.clicked.connect(Dispatch.tabledelete)

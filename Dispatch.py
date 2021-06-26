@@ -14,7 +14,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
         self.cur = conn.cursor()
         self.type = type
         if(type == 0):
-            hlist = ['车ID', '车型', '座位数']
+            hlist = ['飞机ID', '飞机型', '座位数']
             self.attrs = ['t_tid', 't_ttype', 't_seatnum']
             self.cur.execute("select * from train;")
             list = self.cur.fetchall()
@@ -23,7 +23,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.pk = 't_tid'
 
         elif(type == 1):
-            hlist = ['站台ID', '站台名', '站台经度', '站台纬度']
+            hlist = ['机场ID', '机场名', '机场经度', '机场纬度']
             self.attrs = ['s_sid', 's_sname', 's_slongitude', 's_slatitude']
             self.cur.execute("select * from station;")
             list = self.cur.fetchall()
@@ -188,6 +188,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.cur.execute("drop user " + self.detail.item(row, 1).text() + ";")
         self.detail.removeRow(row)
         self.tablelist.remove(self.tablelist[row])
+
 
     def accept(self):
         self.conn.commit()
