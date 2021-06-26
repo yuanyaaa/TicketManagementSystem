@@ -46,14 +46,15 @@ create table conductor(
 drop table if exists departuretime;
 create table departuretime
 (
-    dt_trainnum       char(9) null,
+    dt_trainnum       char(9),
     dt_aimsid         char(9) null,
     dt_tid            char(9) null,
-    dt_departuretime  date    null,
+    dt_departuretime  datetime    null,
     dt_month          int     null,
     dt_date           int     null,
     dt_ticketentrance int     null,
-    dt_cost           int     null
+    dt_cost           int     null,
+    primary key (dt_trainnum)
 );
 
 drop table if exists manager;
