@@ -113,7 +113,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             if res is None :
                 res = 10011700
             tmp = [int(res)+1,'undefine', '0', '0']
-            self.cur.execute("insert into station values({}, 'undefine', 0, 0);".format(res))
+            self.cur.execute("insert into station values({}, 'undefine', 0, 0);".format(tmp[0]))
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
             self.detail.setRowCount(cnt + 1)

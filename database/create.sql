@@ -70,20 +70,20 @@ create table manager
 
 
 
-drop trigger if exists insert_c;
-delimiter $$
-create trigger insert_c before insert on TicketManagementSystem.conductor for each row
-begin
-    declare
-	tmp character(9);
-    select max(c_cid) into tmp from conductor;
-     if (tmp is null)
-    then set tmp = 0;
-    end if;
-	set tmp = tmp + 1;
-    set NEW.c_cid = tmp;
-end$$
-delimiter ;
+# drop trigger if exists insert_c;
+# delimiter $$
+# create trigger insert_c before insert on TicketManagementSystem.conductor for each row
+# begin
+#     declare
+# 	tmp character(9);
+#     select max(c_cid) into tmp from conductor;
+#      if (tmp is null)
+#     then set tmp = 0;
+#     end if;
+# 	set tmp = tmp + 1;
+#     set NEW.c_cid = tmp;
+# end$$
+# delimiter ;
 #insert into conductor values(20, 'wssss', '666666');
 #select * from conductor;
 
