@@ -101,7 +101,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             print("update "+self.tablename+" set "+attr+" = '"
                           + after +"' where "+self.pk+" = '"+str(before)+"';")
             self.cur.execute("update "+self.tablename+" set "+attr+" = '"
-                         + after +"' where "+self.pk+" = '"+str(before)+"';")
+                          + after +"' where "+self.pk+" = '"+str(before)+"';")
             if (self.type == 3 or self.type == 4) and (c == 2):
                 print("alter user " + self.tablelist[row][1] + " with password '" + str(after) + "';")
                 self.cur.execute("alter user "+ self.tablelist[row][1] +" with password '"+str(after)+"';")
