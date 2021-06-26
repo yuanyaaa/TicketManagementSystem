@@ -108,7 +108,10 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
     def tableadd(self):
         if(self.type == 1):
             self.cur.execute("select max(s_sid) from station;")
-            tmp = [int(self.cur.fetchall()[0][0])+1,'undefine', '0', '0']
+            res = self.cur.fetchall()[0][0]
+            if res is None :
+                res = 0
+            tmp = [int(res)+1,'undefine', '0', '0']
             self.cur.execute("insert into station(s_sname, s_slongitude, s_slatitude) values('undefine', 0, 0);")
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
@@ -118,8 +121,11 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.detail.setItem(cnt, 0, newitem)
         elif self.type == 0:
             self.cur.execute("select max(t_tid) from train;")
-            tmp = [int(self.cur.fetchall()[0][0]) + 1, '空调硬座', 0]
-            self.cur.execute("insert into train(t_ttype, t_seatnum) values ('空调软卧', 300);")
+            res = self.cur.fetchall()[0][0]
+            if res is None :
+                res = 0
+            tmp = [int(res) + 1, '空调硬座', 100]
+            self.cur.execute("insert into train values ({}, \'{}\', {} );".format(tmp[0],tmp[1], tmp[2]))
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
             self.detail.setRowCount(cnt + 1)
