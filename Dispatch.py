@@ -18,7 +18,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['t_tid', 't_ttype', 't_seatnum']
             self.cur.execute("select * from train;")
             list = self.cur.fetchall()
-            # self.title.setText('车辆修改')
+            self.title.setText('飞机修改')
             self.tablename = "train"
             self.pk = 't_tid'
 
@@ -27,7 +27,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['s_sid', 's_sname', 's_slongitude', 's_slatitude']
             self.cur.execute("select * from station;")
             list = self.cur.fetchall()
-            #self.title.setText('站点修改')
+            self.title.setText('机场修改')
             self.tablename = 'station'
             self.pk = 's_sid'
 
@@ -47,7 +47,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['c_cid', 'c_cname', 'c_cpassword']
             self.cur.execute("select * from conductor;")
             list = self.cur.fetchall()
-            #self.title.setText('售票员管理')
+            self.title.setText('售票员管理')
             self.tablename = 'conductor'
             self.pk = 'c_cid'
 
@@ -56,7 +56,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.attrs = ['m_mid', 'm_mname', 'm_mpassword']
             self.cur.execute("select * from manager;")
             list = self.cur.fetchall()
-            #self.title.setText('管理员管理')
+            self.title.setText('管理员管理')
             self.tablename = 'manager'
             self.pk = 'm_mid'
             
@@ -116,7 +116,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             newitem = QTableWidgetItem(str(tmp[0]))
             newitem.setFlags(QtCore.Qt.ItemIsEnabled)
             self.detail.setItem(cnt, 0, newitem)
-        elif(self.type == 0):
+        elif self.type == 0:
             self.cur.execute("select max(t_tid) from train;")
             tmp = [int(self.cur.fetchall()[0][0]) + 1, '空调硬座', 0]
             self.cur.execute("insert into train(t_ttype, t_seatnum) values ('空调软卧', 300);")
