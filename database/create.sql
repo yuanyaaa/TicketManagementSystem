@@ -55,6 +55,12 @@ create table manager
 );
 
 
+DROP TABLE IF EXISTS `c_tc`;
+CREATE TABLE `c_tc` (
+  name varchar(40) DEFAULT NULL,
+  id varchar(40) DEFAULT NULL,
+  count int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 drop table if exists departuretime;
 create table departuretime
