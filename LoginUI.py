@@ -88,8 +88,8 @@ class Ui_Form(QWidget):
         # 管理员选择
         if (self.ifmanager.isChecked()):
             # 连接数据库
-            self.conn = pymysql.connect(database="TicketManagementSystem", user='sf',
-                                        password='software', host="localhost", port=3306)
+            self.conn = pymysql.connect(database="TicketManagementSystem", user='root',
+                                        password='wtwt882173', host="localhost", port=3306)
             # conn传递
             self.managerui.connectDB(self.conn)
             self.hide()
