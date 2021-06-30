@@ -39,7 +39,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             # self.cur.execute("select dt_trainnum,dt_tid, s_sname, dt_departuretime,   dt_ticketentrance, dt_month, dt_date from departuretime,station where dt_aimsid = s_sid;")
             list = self.cur.fetchall()
             print(list)
-            self.title.setText('车次修改')
+            self.title.setText('航班修改')
             self.tablename = 'departuretime'
             self.pk = 'dt_trainnum'
 
@@ -103,8 +103,8 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.cur.execute("update "+self.tablename+" set "+attr+" = '"
                           + after +"' where "+self.pk+" = '"+str(before)+"';")
             if (self.type == 3 or self.type == 4) and (c == 2):
-                print("alter user " + self.tablelist[row][1] + " with password '" + str(after) + "';")
-                self.cur.execute("alter user "+ self.tablelist[row][1] +" with password '"+str(after)+"';")
+                print("alter user '" + self.tablelist[row][1] + "'@'localhost' identified by '" + str(after) + "';")
+                self.cur.execute("alter user '"+ self.tablelist[row][1] +"'@'localhost' identified by '"+str(after)+"';")
 
     def tableadd(self):
         if(self.type == 1):
@@ -143,13 +143,11 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
         elif(self.type == 3):
             self.cur.execute("select max(c_cid) from conductor;")
             i = self.cur.fetchall()[0][0]
-            tmp = [int(i) + 1,'conductor0'+str(int(i) + 1 - 201730219) , '0']
+            tmp = [int(i) + 1,'conductor0'+str(int(i) + 1) , '0']
             print("insert into conductor(c_cname, c_cpassword) values ('"+str(tmp[1])+"' , '0');")
             self.cur.execute("insert into conductor(c_cname, c_cpassword) values ('"+str(tmp[1])+"' , '0');")
-            print("create user " + tmp[1] + " with password '" + tmp[2] + "';")
-            self.cur.execute("create user "+tmp[1]+" with password '"+tmp[2]+"';")
-            print("grant " + "conductor to "+tmp[1] +";")
-            self.cur.execute("grant " + "conductor to "+tmp[1] +";")
+            CreateCMD="create user '" + tmp[1] + "'@'localhost' identified by '" + tmp[2] + "';"
+            self.cur.execute(CreateCMD)
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
             self.detail.setRowCount(cnt + 1)
@@ -163,12 +161,11 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
             self.cur.execute("select max(m_mid) from manager;")
             i = self.cur.fetchall()[0][0]
             tmp = [int(i) + 1, 'manager0' + str(int(i)+1), '0']
-            print("insert into manager(m_mname, m_mpassword) values ('" + str(tmp[1]) + "' , '0');")
-            self.cur.execute("insert into manager(m_mname, m_mpassword) values ('" + str(tmp[1]) + "' , '0');")
-            print("create user " + tmp[1] + " with password '" + tmp[2] + "';")
-            self.cur.execute("create user " + tmp[1] + " with password '" + tmp[2] + "';")
-            print("grant " + "manager to " + tmp[1] + ";")
-            self.cur.execute("grant " + "manager to " + tmp[1] + ";")
+            InsertCMD="insert into manager(m_mid,m_mname, m_mpassword) values ('" +str(tmp[0])+"' ,'"+ str(tmp[1]) + "' , '0');"
+            print(InsertCMD)
+            self.cur.execute(InsertCMD)
+            CreateCMD="create user '" + tmp[1] + "'@'localhost' identified by '" + tmp[2] + "';"
+            self.cur.execute(CreateCMD)
             self.tablelist.append(tmp)
             cnt = self.detail.rowCount()
             self.detail.setRowCount(cnt + 1)
@@ -186,7 +183,7 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
         print("delete from "+self.tablename+" where "+self.pk+" = '"+str(item)+"';")
         self.cur.execute("delete from " + self.tablename + " where " + self.pk + " = '" + str(item) + "';")
         if (self.type == 3 or self.type == 4):
-            self.cur.execute("drop user " + self.detail.item(row, 1).text() + ";")
+            self.cur.execute("drop user '" + self.detail.item(row, 1).text() + "'@'localhost';")
         self.detail.removeRow(row)
         self.tablelist.remove(self.tablelist[row])
 

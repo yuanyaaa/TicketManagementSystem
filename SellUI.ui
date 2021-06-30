@@ -157,7 +157,7 @@ font: 16pt &quot;楷体&quot;;
 }</string>
    </property>
    <property name="text">
-    <string>打印车票</string>
+    <string>打印机票</string>
    </property>
   </widget>
   <widget class="QPushButton" name="execbtn">
