@@ -143,6 +143,8 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
         elif(self.type == 3):
             self.cur.execute("select max(c_cid) from conductor;")
             i = self.cur.fetchall()[0][0]
+            if i is None:
+                i=1
             tmp = [int(i) + 1,'conductor0'+str(int(i) + 1) , '0']
             print("insert into conductor(c_cname, c_cpassword) values ('"+str(tmp[1])+"' , '0');")
             self.cur.execute("insert into conductor(c_cname, c_cpassword) values ('"+str(tmp[1])+"' , '0');")
@@ -160,6 +162,8 @@ class Dispatch(QtWidgets.QDialog, Ui_Dispatch):
         elif (self.type == 4):
             self.cur.execute("select max(m_mid) from manager;")
             i = self.cur.fetchall()[0][0]
+            if i is None:
+                i=1
             tmp = [int(i) + 1, 'manager0' + str(int(i)+1), '0']
             InsertCMD="insert into manager(m_mid,m_mname, m_mpassword) values ('" +str(tmp[0])+"' ,'"+ str(tmp[1]) + "' , '0');"
             print(InsertCMD)
